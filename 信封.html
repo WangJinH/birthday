@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #dfb88e;
+    }
+
+    .book {
+        width: 300px;
+        height: 400px;
+        transform-style: preserve-3d;
+        perspective: 1200px;
+        background-color: white;
+        position: relative;
+        box-shadow: inset 300px 0 30px rgba(0, 0, 0, 0.2), 0 10px 100px rgba(0, 0, 0, 0.3);
+        transition: 1s;
+        font-family: '隶书';
+        color: black;
+        z-index: 1;
+    }
+
+    .active {
+        transform: rotate(-10deg) scale(1.5);
+        box-shadow: inset 20px 0 30px rgba(0, 0, 0, 0.2), 0 10px 100px rgba(0, 0, 0, 0.3);
+    }
+
+    .book::after {
+        position: absolute;
+        content: '';
+        left: 2px;
+        top: -5px;
+        width: 100%;
+        height: 5px;
+        background-color: #0d2a50;
+        transform: skewX(-45deg);
+        transform-origin: right;
+    }
+
+    .book::before {
+        position: absolute;
+        content: '';
+        top: -2px;
+        right: -5px;
+        width: 5px;
+        height: 100%;
+        background-color: #3d5a83;
+        transform: skewY(-45deg);
+    }
+
+    .book .cover {
+        background-color: #2a3f5c;
+        width: 100%;
+        height: 100%;
+        transform-origin: left;
+        transition: 1s;
+        position: relative;
+    }
+
+    .book .cover p {
+        writing-mode: vertical-lr;
+        background-color: white;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        font-size: 2rem;
+        letter-spacing: 5px;
+        padding: 10px;
+    }
+
+    .actives {
+        transform: rotateY(-135deg);
+    }
+
+    .book .conter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        z-index: -1;
+        font-size: 1rem;
+        padding: 20px;
+    }
+
+    .conter p {
+        width: 230px;
+    }
+</style>
+
+<body>
+    <div class="book">
+        <div class="cover">
+            <p>葵花宝典</p>
+        </div>
+        <div class="conter">
+            <p>&emsp;&emsp;</p>
+        </div>
+    </div>
+</body>
+<script>
+    var index = 0;
+    var word = '欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功欲练此功'.split('');
+    var conter = document.querySelector('.conter p');
+    var book = document.querySelector('.book');
+    var cover = document.querySelector('.cover');
+    function wordShow() {
+        var timer = setInterval(() => {
+            if (index < word.length) {
+                conter.innerText += word[index];
+                index++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 200)
+    }
+    book.onclick = () => {
+        book.classList.add('active');
+        cover.classList.add('actives');
+        wordShow();
+    }
+    // document.querySelector('body').onclick = () => {
+    //     book.classList.remove('active');
+    //     cover.classList.remove('actives');
+    // }
+
+</script>
+
+</html>
