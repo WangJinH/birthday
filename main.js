@@ -53,6 +53,9 @@ timeline
   .to(['.d1', '.d2', '.d3', '.d4', '.d5', '.d6'], { duration: 1, x: (i) => i % 2 !== 0 ? [3, 5, 4][Math.floor(i / 2)] : 0, y: (i) => i % 2 === 0 ? [7, 2, 6][Math.floor(i / 2)] : 0, yoyo: true, ease: 'power1.inOut', repeat: -1 }, ">");
 
   timeline.pause();
+  document.addEventListener('scroll', function(event) {
+    event.preventDefault();
+  }, { passive: false });
 
   const loadingBox = document.querySelector('.warpper');
   //  删除loading效果
@@ -63,6 +66,9 @@ timeline
     document.body.classList.remove( "body-active");
     loadingBox.remove();
     timeline.play();
+    document.addEventListener('scroll', function(event) {
+      event.preventDefault();
+    }, { passive: true });
     if (window.name === '') {
       window.name = onload;
       tipsWord();
