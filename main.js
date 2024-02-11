@@ -4,6 +4,7 @@ let tipsText = '';
 
 function tipsWord() {
   const data = new Date();
+  var hour = data.getHours();
   if (hour >= 6 && hour <= 8) {
     tipsText = '早安，朱佳';
   } else if (hour >= 9 && hour <= 11) {
