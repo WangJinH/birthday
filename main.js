@@ -54,6 +54,11 @@ timeline
 
   timeline.pause();
 
+  document.body.addEventListener('touchmove', function(e){
+    e.preventDefault();
+}, { passive: false });
+
+
   const loadingBox = document.querySelector('.warpper');
   //  删除loading效果
   
@@ -62,6 +67,9 @@ timeline
     svgAutoSize();
     document.body.classList.remove( "body-active");
     loadingBox.remove();
+    document.removeEventListener('touchmove', function(event) {
+      event.preventDefault();
+    }, { passive: false });
     if (window.name === '') {
       window.name = onload;
       tipsWord();
