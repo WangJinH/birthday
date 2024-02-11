@@ -20,23 +20,20 @@ function tipsWord() {
   tips.innerText = tipsText;
 }
 
+const loadingBox = document.querySelector('.warpper');
+//  删除loading效果
 
 // // 判断页面是否是首次加载
 window.addEventListener('load', function () {
   svgAutoSize();
+  document.body.classList.remove( "body-active");
+  loadingBox.remove();
   if (window.name === '') {
     window.name = onload;
     tipsWord();
     gsap.to(tipsBox, .6, { top: "20px", autoAlpha: 1, })
     gsap.to(tipsBox, .4, { top: '0px', autoAlpha: 0, delay: 5 })
   }
-})
-
-const loadingBox = document.querySelector('.warpper');
-//  删除loading效果
-document.addEventListener('DOMContentLoaded',function(){
-  document.body.classList.remove( "body-active");
-  loadingBox.remove();
 })
 
 
