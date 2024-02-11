@@ -4,7 +4,6 @@ let tipsText = '';
 
 function tipsWord() {
   const data = new Date();
-  let hour = data.getHours();
   if (hour >= 6 && hour <= 8) {
     tipsText = '早安，朱佳';
   } else if (hour >= 9 && hour <= 11) {
@@ -28,7 +27,7 @@ function disableScroll(){
 
 // 允许页面滚动事件
 function enableScoll(){
-  document.body.style.overflow = 'auto';
+  document.body.style.cssText = "animation:none";
   document.body.removeEventListener('touchmove',preventDefault,{passive:false});
 }
 
@@ -38,12 +37,14 @@ function preventDefault(event){
 }
 
 
-const loadingBox = document.querySelector('.loading-box');
+const loadingBox = document.querySelector('.warpper');
 //  删除loading效果
 function completeLoading() {
     if (document.readyState == "complete") {
       loadingBox.remove();
       enableScoll();
+      document.body.classList.remove( "body-active");
+      document.body.style.background = "#fee7e8"
     }
 }
 
