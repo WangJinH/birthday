@@ -466,15 +466,15 @@ svg path {
     }
 
     .cardbox .person {
-        width: 220px;
-        height: 350px;
-        top: -4%;
+        width: 200px;
+        height: 300px;
+        top: 8%;
     }
 
     .hat {
         width: 100px;
         height: 100px;
-        top: -10%;
+        top: 0;
         left: 43%;
     }
 
@@ -483,7 +483,7 @@ svg path {
     }
 
     .wish h5 {
-        font-size: 1rem;
+        font-size: 0.6rem;
     }
 }
 
@@ -497,7 +497,7 @@ svg path {
         margin-top: 0;
     }
     .wish h5{
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
     .wish-hbd{
         font-size: 1.5rem;
@@ -538,6 +538,7 @@ svg path {
     }
     .wish h5{
         margin: 0;
+        font-size: 1rem;
     }
     .hat{
         width: 110px;

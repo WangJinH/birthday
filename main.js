@@ -57,7 +57,6 @@ document.onreadystatechange = completeLoading;
 // // 判断页面是否是首次加载
 window.addEventListener('load', function () {
   svgAutoSize();
-
   if (window.name === '') {
     window.name = onload;
     tipsWord();
@@ -231,9 +230,9 @@ black.onclick = () => {
   video.pause();
   music.play();
 }
-wrap.onclick = () => {
+wrap.addEventListener('touchstart',()=>{
   music.play();
-}
+})
 
 
 
