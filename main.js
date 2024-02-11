@@ -52,7 +52,7 @@ timeline
   .fromTo('.d6', 1, { ...ballonsUpdown }, { y: 0 }, 0.09)
   .to(['.d1', '.d2', '.d3', '.d4', '.d5', '.d6'], { duration: 1, x: (i) => i % 2 !== 0 ? [3, 5, 4][Math.floor(i / 2)] : 0, y: (i) => i % 2 === 0 ? [7, 2, 6][Math.floor(i / 2)] : 0, yoyo: true, ease: 'power1.inOut', repeat: -1 }, ">");
   
-
+  timeline.pause();
   const loadingBox = document.querySelector('.warpper');
   //  删除loading效果
   
@@ -61,6 +61,7 @@ timeline
     svgAutoSize();
     document.body.classList.remove( "body-active");
     loadingBox.remove();
+    timeline.play();
     if (window.name === '') {
       window.name = onload;
       tipsWord();
