@@ -21,23 +21,6 @@ function tipsWord() {
   tips.innerText = tipsText;
 }
 
-const loadingBox = document.querySelector('.warpper');
-//  删除loading效果
-
-// // 判断页面是否是首次加载
-window.addEventListener('load', function () {
-  svgAutoSize();
-  document.body.classList.remove( "body-active");
-  loadingBox.remove();
-  if (window.name === '') {
-    window.name = onload;
-    tipsWord();
-    gsap.to(tipsBox, .6, { top: "20px", autoAlpha: 1, })
-    gsap.to(tipsBox, .4, { top: '0px', autoAlpha: 0, delay: 5 })
-  }
-})
-
-
 
 // 动画加载
 // 定义动画属性
@@ -69,6 +52,25 @@ timeline
   .fromTo('.d6', 1, { ...ballonsUpdown }, { y: 0 }, 0.09)
   .to(['.d1', '.d2', '.d3', '.d4', '.d5', '.d6'], { duration: 1, x: (i) => i % 2 !== 0 ? [3, 5, 4][Math.floor(i / 2)] : 0, y: (i) => i % 2 === 0 ? [7, 2, 6][Math.floor(i / 2)] : 0, yoyo: true, ease: 'power1.inOut', repeat: -1 }, ">");
 
+  timeline.pause();
+
+  const loadingBox = document.querySelector('.warpper');
+  //  删除loading效果
+  
+  // // 判断页面是否是首次加载
+  window.addEventListener('load', function () {
+    svgAutoSize();
+    document.body.classList.remove( "body-active");
+    loadingBox.remove();
+    timeline.play();
+    if (window.name === '') {
+      window.name = onload;
+      tipsWord();
+      gsap.to(tipsBox, .6, { top: "20px", autoAlpha: 1, })
+      gsap.to(tipsBox, .4, { top: '0px', autoAlpha: 0, delay: 5 })
+    }
+  })
+  
 
 ScrollTrigger.create({
   trigger: '.wrap',
