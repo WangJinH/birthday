@@ -20,40 +20,6 @@ function tipsWord() {
   tips.innerText = tipsText;
 }
 
-// 禁止页面滚动事件
-function disableScroll(){
-  document.body.addEventListener('touchmove',preventDefault,{passive:false});
-}
-
-// 允许页面滚动事件
-function enableScoll(){
-  document.body.style.cssText = "animation:none";
-  document.body.removeEventListener('touchmove',preventDefault,{passive:false});
-}
-
-// 阻止touchmove事件的默认行为
-function preventDefault(event){
-  event.preventDefault();
-}
-
-
-const loadingBox = document.querySelector('.warpper');
-//  删除loading效果
-function completeLoading() {
-    if (document.readyState == "complete") {
-      loadingBox.remove();
-      enableScoll();
-      document.body.classList.remove( "body-active");
-      document.body.style.background = "#fee7e8"
-    }
-}
-
-
-//监听加载状态改变
-document.onreadystatechange = completeLoading;
-
-
-
 
 // // 判断页面是否是首次加载
 window.addEventListener('load', function () {
@@ -64,6 +30,13 @@ window.addEventListener('load', function () {
     gsap.to(tipsBox, .6, { top: "20px", autoAlpha: 1, })
     gsap.to(tipsBox, .4, { top: '0px', autoAlpha: 0, delay: 5 })
   }
+})
+
+const loadingBox = document.querySelector('.warpper');
+//  删除loading效果
+document.addEventListener('DOMContentLoaded',function(){
+  document.body.classList.remove( "body-active");
+  loadingBox.remove();
 })
 
 
